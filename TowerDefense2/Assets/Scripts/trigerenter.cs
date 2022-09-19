@@ -10,9 +10,10 @@ public class trigerenter : MonoBehaviour
     public Text txt_healthCount;
     public int defaultHealthCount;
     public int healthCount;
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("enemy"))
+        Debug.Log("trigger");
+        if (other.CompareTag("Enemy"))
         {
             LoseHealth();
         }
@@ -26,6 +27,7 @@ public class trigerenter : MonoBehaviour
     //Lose health count
     public void LoseHealth()
     {
+      
         if (healthCount < 1)
             return;
 
