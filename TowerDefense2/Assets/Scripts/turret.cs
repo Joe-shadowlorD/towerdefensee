@@ -7,9 +7,19 @@ public class turret : MonoBehaviour
     private Transform target;
     public float range = 15f;
 
+    [Header("Attributes")]
+
     public string EnemyTag = "Enemy";
     public Transform PartToRotato;
     public float Turnspeedo = 10f;
+
+    [Header("Unity Setup Fields")]
+
+    public float Firerate = 1f;
+    private float firecontdowm = 0f;
+
+    public GameObject bulletoprefeb;
+    public Transform FirePointo;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +65,23 @@ public class turret : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(PartToRotato.rotation, lookRotation, Time.deltaTime * Turnspeedo).eulerAngles;
         PartToRotato.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        if (firecontdowm <= 0f)
+        {
+            shoot();
+            firecontdowm = 1f / Firerate;
+        }
+        firecontdowm -= Time.deltaTime;
+    }
+
+    void shoot()
+    {
+        Debug.Log("SHOOTOOOO");
+        GameObject bulletGO = (GameObject) Instantiate(bulletoprefeb, FirePointo.position, FirePointo.rotation);
+        Bullete bullet = bulletGO.GetComponent<Bullete>();
+
+        if (bullet != null)
+            bullet.Chase(target);
     }
     private void OnDrawGizmosSelected()
     {
