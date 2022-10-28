@@ -5,10 +5,11 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     public float speed = 5f;
+    public int Worth = 50;
 
     private Transform target;
     private int waypointIndex = 0;
-
+   // MoneyManager Moneymanage;
     void Start()
     {
         target = Waypoints.points[0];
@@ -31,6 +32,7 @@ public class enemy : MonoBehaviour
         if(waypointIndex >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
+           // MoneyManager. += 10;
             return;
         }
         waypointIndex++;

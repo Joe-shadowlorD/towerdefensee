@@ -12,6 +12,7 @@ public class turret : MonoBehaviour
     public string EnemyTag = "Enemy";
     public Transform PartToRotato;
     public float Turnspeedo = 10f;
+    public int Price = 250;
 
     [Header("Unity Setup Fields")]
 
@@ -57,6 +58,7 @@ public class turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (target == null)
             return;
 
@@ -87,5 +89,15 @@ public class turret : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void OnMouseDown()
+    {
+        Getturret();
+    }
+
+    void Getturret()
+    {
+        
     }
 }

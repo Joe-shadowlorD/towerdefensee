@@ -1,0 +1,9 @@
+Health:
+Als de enemy tegen de rode cube aankomt explodeert de enemy 
+en gaat de health van de player naar beneden.
+
+visual: als de enemy 3 keer explodeert dan komt er rook bij de rodecube, 
+4de keer komt er brand, de 5e enemy gaat de rode cube kapot.  
+sound: Boom 
+
+GO: Cube, enemy. healtbar cube, smoke particals, fire particals
