@@ -6,9 +6,13 @@ public class Bullete : MonoBehaviour
 {
     public Transform target;
 
+    
     public float speed = 70f;
     public float ExplosioRadiuus = 0f;
     public GameObject impactEffect;
+
+    public int damage = 25;
+
 
     private GameObject _gameMaster;
     private MoneyManager _moneyManager;
@@ -76,13 +80,19 @@ public class Bullete : MonoBehaviour
         }
     }
 
-    public void Damage(Transform enemy)
+    
+    void Damage(Transform Enemy)
     {
-        int worth = enemy.GetComponent<enemy>().Worth;
+        int worth = Enemy.GetComponent<enemy>().Worth;
         _moneyManager.MoneyAdd(worth);
-        Destroy(enemy.gameObject);
-    }
 
+        enemy e = Enemy.GetComponent<enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
